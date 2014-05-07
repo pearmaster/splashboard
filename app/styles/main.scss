@@ -1,0 +1,95 @@
+// bower:scss
+// endbower
+
+
+body {
+    background-color: #333;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+#infoblock {
+    top: 30px;
+    left: 5px;
+    width: 310px;
+    position: absolute;
+    text-align: center;
+}
+
+@media only screen and (max-device-width: 320px) {
+    #infoblock {
+        width: 100%;
+        left: 0;
+        height: 100%;
+    }
+
+    #clockinfo {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
+
+#clockinfo {
+    font-family: 'Montserrat Alternates', sans-serif;
+    color: white;
+    text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+         -1px 1px 0 #000,
+          1px 1px 0 #000;
+}
+
+#clock {
+    font-size: 4em;
+    font-size: 90px;
+}
+
+#infoline {
+    font-size: 30px;
+}
+
+#wxicon {
+    font-family: MeteoconsRegular;
+    margin-right: .2em;
+}
+
+.imageframe {
+    position: fixed !important;
+    top: 0;
+    width: 100%;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    z-index: -9999;
+}
+
+#alertbar {
+    background-color: red;
+    color: white;
+    width: 100%;
+    font-size: 18pt;
+    font-family: 'Montserrat Alternates', sans-serif;
+    padding: 5px;
+    padding-left: 1em;
+    overflow: hidden;
+    position: fixed;
+}
+
+#caption-box {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    margin: .5em auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    width: auto;
+}
+
+#caption-text {
+    background-color: rgba(0, 0, 0, .5);
+    color: white;
+    font-family: 'Montserrat Alternates', sans-serif;
+    padding: 3px;
+}

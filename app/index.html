@@ -1,0 +1,81 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <title ng-bind="title"></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link href='http://fonts.googleapis.com/css?family=Montserrat+Alternates' rel='stylesheet' type='text/css'/>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css styles/vendor.css -->
+    <link rel="stylesheet" href="thirdparty/meteocons/stylesheet.css"/>
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css"/>
+    <!-- endbuild -->
+
+  </head>
+  <body ng-controller="AppController">
+    <div ng-if="mode=='night'">
+      <!-- build:css({.tmp,app}) styles/nightmode.css -->
+      <link rel="stylesheet" href="styles/nightmode.css"/>
+      <!-- endbuild -->
+    </div>
+
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div ng-controller="BackgroundCtrl">
+        <div ng-controller="AlertCtrl" >
+            <div id="alertbar" ng-show="alert.active"><span ng-bind="alert.text"></span></div>
+        </div>
+        <div class="imageframe" backsplash url="{{backgroundUrl}}" mode="resize" fade="true" ng-if="mode=='photo'">
+          <div id="caption-box" ng-if="backgroundCaption">
+            <span id="caption-text" ng-bind="backgroundCaption"></span>
+          </div>
+        </div>
+        <div class="imageframe" backsplash url={{webcamUrl}} mode="resize"
+             fade="false" ng-controller="WebcamController" ng-if="mode=='webcam'">
+        </div>
+        <div id="infoblock">
+            <div id="clockinfo" ng-controller="ClockCtrl" >
+                <div id="clock" ng-bind="time"></div>
+                <div id="infoline"><span id="date" ng-bind="date"></span>
+                    <span id="wx" ng-controller="WeatherCtrl" ng-show="condition"><span id="wxicon" ng-bind="iconCodes[condition.code]"></span><span ng-bind="condition.temp"></span>&deg;</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/resemblejs/Resemble.js"></script>
+    <script src="bower_components/angular-cookie/angular-cookie.js"></script>
+    <script src="bower_components/angular-backsplash/src/backsplash.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/alerts.js"></script>
+    <script src="scripts/controllers/weather.js"></script>
+    <script src="scripts/controllers/clock.js"></script>
+    <script src="scripts/controllers/background.js"></script>
+    <script src="scripts/controllers/webcamcontroller.js"></script>
+    <script src="scripts/services/webcam.js"></script>
+    <!-- endbuild -->
+</body>
+</html>

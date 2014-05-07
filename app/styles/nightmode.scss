@@ -1,0 +1,17 @@
+
+body {
+    background-color: #000;
+}
+
+#clockinfo {
+    color: #555;
+    text-shadow:
+        -1px -1px 0 #999,
+         1px -1px 0 #999,
+         -1px 1px 0 #999,
+          1px 1px 0 #999;
+}
+
+#infoline {
+    display: none;
+}
