@@ -69,6 +69,6 @@ angular.element(document).ready(function () {
             runApp([]);
         });
     } else {
-        angular.bootstrap(document, ['splashboardApp']);
+        runApp([]);
     }
 });

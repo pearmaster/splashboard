@@ -17,10 +17,15 @@ splashboardApp.controller('AppController', function($scope, preferences, $timeou
         end.setHours(preferences.nightmode[1]);
         end.setMinutes(0);
         end.setSeconds(0);
+        var delay = 300;
         if (end < start) {
-            end.setDate(end.getDate() + 1);
+            if (now.getHours() < end.getHours()) {
+                start.setDate(start.getDate() - 1);
+            } else {
+                end.setDate(end.getDate() + 1);
+            }
         }
-        var delay = 10000;
+        console.log('Nightmode between ' + start.toString() + ' and ' + end.toString());
         if ((now >= start) && (now < end)) {
             console.log('Nightmode is on');
             $scope.mode = 'night';
@@ -40,7 +45,7 @@ splashboardApp.controller('AppController', function($scope, preferences, $timeou
                 window.brightness.set(100);
             }
         }
-        console.log('Mode=' + $scope.mode + ' changes to night in ' + (delay/60000) + ' minutes');
+        console.log('Mode=' + $scope.mode + ' changes in ' + (delay/60000) + ' minutes');
         $timeout(switchNightMode, delay);
     };
 
@@ -107,5 +112,3 @@ splashboardApp.factory('AtTime', function ($timeout) {
         return $timeout(func, delta);
     };
 });
-
-
