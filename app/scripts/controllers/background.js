@@ -60,29 +60,44 @@ angular.module('splashboardApp')
             scheduleNextPhoto();
             return;
         }
-        console.log('Setting next photo');
         if ($scope.mode === 'photo') {
             var url = $scope.backgroundImages[$scope.incrementPhotoIndex()];
             console.log('Setting background url to ' + url);
             $scope.backgroundUrl = url;
+        } else {
+            $scope.backgroundUrl = '';
         }
     };
 
-    var scheduleNextPhoto = function () {
-        console.log('Scheduling next photo', preferences.delay);
-        $timeout(function () {
+    $scope._nextPhotoPromise = null;
+    var scheduleNextPhoto = function (timeout) {
+        if (timeout === undefined) {
+            timeout = preferences.delay;
+        }
+        console.log('Scheduling next photo', timeout);
+        if ($scope._nextPhotoPromise !== null) {
+            $timeout.cancel($scope._nextPhotoPromise);
+        }
+        return $timeout(function () {
             $scope.nextPhoto();
-        }, preferences.delay);
+        }, timeout);
     };
 
     $scope.$on('imageplaced', function () {
+        console.log('Image placed event');
         scheduleNextPhoto();
     });
 
     $scope.$watch('mode', function (newval, oldval) {
         console.log('New mode change ' + oldval + ' -> ' + newval);
         if (newval === 'photo') {
-            scheduleNextPhoto();
+            scheduleNextPhoto(1000);
+        }
+    });
+
+    $scope.$on('$destroy', function () {
+        if ($scope._nextPhotoPromise !== null) {
+            $timeout.cancel($scope._nextPhotoPromise);
         }
     });
 
