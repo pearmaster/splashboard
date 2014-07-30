@@ -1,5 +1,5 @@
- Splashboard
- ===========
+# Splashboard
+
  Splashboard is an HTML5 app for displaying information in a pleasant way.
 
  Currently it can display the following information:
@@ -11,7 +11,7 @@
  * Severe weather alerts (U.S. only)
 
 Additionally, Splashboard supports a feature called nightmode, in which the
-display goes dark.  
+display goes dark.
 
 ## How to Build
 
@@ -51,17 +51,22 @@ Example:
     nightmode: [23, 6]
 }
 ```
-*picasa* - Picasa Web Album feed.  Make sure you use "alt=json"
-*images* - URLs to images to display in addition to images found in any picasa album feeds
-*zip* - Zip code used for weather and weather alerts
-*delay* - How many miliseconds between displaying images
-*nightmode* - Two element array.  First element is the hour in which nightmode starts, followed by the hour in which nightmode ends.
+
+**picasa** - Picasa Web Album feed.  Make sure you use "alt=json"
+
+**images** - URLs to images to display in addition to images found in any picasa album feeds
+
+**zip** - Zip code used for weather and weather alerts
+
+**delay** - How many miliseconds between displaying images
+
+**nightmode** - Two element array.  First element is the hour in which nightmode starts, followed by the hour in which nightmode ends.
 
 ### Devices
 Splashboard works on a number of different devices.  I run it frequently as a
-screensaver on my Mac through WebSaver http://code.google.com/p/websaver
+screensaver on my Mac through [WebSaver](http://code.google.com/p/websaver)
 
-I'm also working on running it on Chumby powered devices, through a Chromeless
+I'm also working on running it on [Chumby](http://www.chumby.com) powered devices, through a Chromeless
 QtWebkit app.
 
 ## Roadmap
